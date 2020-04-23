@@ -6,6 +6,7 @@ import FormSex from './components/form/FormSex';
 import FormFullname from './components/form/FormFullname';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
+
 function App() {
   return ([
     <div className="App">

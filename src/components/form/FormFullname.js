@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import TopNav from '../TopNav'
 import LeftNav from '../LeftNav'
+import { UserContext } from '../UserContext'
+
 
 function FormFullname() {
-
-    const nameFirstname = 'Valérie Andriani'
+    const user = useContext(UserContext);
+    
     return (
         <fragment>
             <TopNav />
@@ -12,7 +14,7 @@ function FormFullname() {
                 <LeftNav />
                 <div className="form-fullname">
                     <h1>
-                        Bonjour, {nameFirstname}
+                        Bonjour, {user.homme} ou  {user.femme} <br /> <strong>{user.name}</strong>  <strong>{user.firstname}</strong>
                     </h1>
                 </div>
             </div>

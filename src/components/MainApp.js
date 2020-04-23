@@ -4,11 +4,12 @@ import LeftNav from './LeftNav';
 import MainContent from './MainContent';
 import TopNav from './TopNav';
 
+
 function MainApp () {
         return (
             <fragment>
                 <TopNav />
-                <div class="d-flex" id="wrapper">
+                <div className="d-flex" id="wrapper">
                     <LeftNav />
                     <MainContent />
                 </div>

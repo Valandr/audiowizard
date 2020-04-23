@@ -1,34 +1,34 @@
-import React, { useState } from 'react';
+import React, {useContext} from 'react';
+import { UserContext } from '../UserContext'
 import { useHistory } from "react-router-dom";
 
 
+
 function FormIdentity() {
-    const [name, setName] = useState("");
-    const [firstname, setFirstname] = useState("");
+
+    const user = useContext(UserContext);
     const { push: navigate } = useHistory();
 
     const handleSubmit = (evt) => {
         evt.preventDefault();
-        alert(`Submitting ${name} ${firstname}`)
+        navigate("/identity")
+
     }
 
-    
     return (
-        <form id="form-input" onSubmit={() => navigate("/identity")}>
+        <form id="form-input" onSubmit={handleSubmit}>
             <label>
                 <input
                     className="fullname"
-                    type="text"
                     placeholder="Nom"
-                    value={name}
-                    onChange={e => setName(e.target.value)}
+                    onChange={e => user.setName(e.target.value)}
+                    required
                 />
                 <input
                     className="fullname"
-                    type="text"
                     placeholder="Prénom"
-                    value={firstname}
-                    onChange={e => setFirstname(e.target.value)}
+                    onChange={e => user.setFirstname(e.target.value)}
+                    required
                 />
             </label>
             <input

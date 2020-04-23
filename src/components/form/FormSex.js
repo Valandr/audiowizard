@@ -1,16 +1,14 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 import TopNav from '../TopNav'
 import LeftNav from '../LeftNav'
+import { UserContext } from '../UserContext'
 import { useHistory } from "react-router-dom";
 
-function FormSex(homme, femme) {
-    const [sex, setSex] = useState("");
+function FormSex() {
+    const user = useContext(UserContext);
+
     const { push: navigate } = useHistory();
 
-    const handleSubmit = (evt) => {
-        evt.preventDefault();
-        alert(`Submitting ${sex.homme}`)
-    }
     return (
         <fragment>
             <TopNav />
@@ -26,8 +24,8 @@ function FormSex(homme, femme) {
                         <button
                             id="homme"
                             type="button"
-                            value={sex}
                             className="btn btn-light"
+                            onChange={(e) => user.setHomme(e.target.value)}
                             onClick={() => navigate("/fullname")}
                         >
                             Homme
@@ -35,8 +33,8 @@ function FormSex(homme, femme) {
                         <button
                             id="femme"
                             type="button"
-                            value={sex}
                             className="btn btn-light"
+                            onChange={(e) => user.setFemme(e.target.value)}
                             onClick={() => navigate("/fullname")}
                         >
                             Femme
